@@ -1,5 +1,5 @@
-MIT License
-
+#MIT License
+#
 #Copyright (c) 2021 Voldermirt
 #
 #Permission is hereby granted, free of charge, to any person obtaining a copy
