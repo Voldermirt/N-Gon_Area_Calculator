@@ -12,10 +12,18 @@ class Vector:
     def distance_to(self, vector):
         return math.sqrt((vector.x - self.x)**2 + (vector.y - self.y)**2)
 
-### The program ###
+### Input helper
+def get_idiotproof_input(message, type):
+    user_input = None
+    while True:
+        user_input = type(input(message))
+        if isinstance(user_input, type):
+            return user_input
+        print("Invalid.")
 
-side_num = int(input("Number of sides: "))
-radius = float(input("Radius: "))
+### The program ###
+side_num = get_idiotproof_input("Number of sides: ", int)
+radius = get_idiotproof_input("Radius: ", float)
 
 internal_angle = math.radians(360.0 / side_num)
 
@@ -25,6 +33,8 @@ point_2 = Vector(math.sin(internal_angle), math.cos(internal_angle)).multiply_sc
 distance = point_1.distance_to(point_2)
 
 p = (radius + radius + distance) / 2
+
+# Area of a triangle given 3 sides: sqrt(p(p - a)(p - b)(p - c)) where p = (a + b + c) / 2
 
 area_triangle = math.sqrt(p * (p - radius) * (p - radius) * (p - distance))
 area_ngon = area_triangle * side_num
